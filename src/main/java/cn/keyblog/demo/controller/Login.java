@@ -1,7 +1,6 @@
 package cn.keyblog.demo.controller;
 
 import cn.keyblog.demo.dao.AllUser;
-import cn.keyblog.demo.util.Json.Model.MyLogin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,8 +9,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import cn.keyblog.demo.entity.User;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class Login {
@@ -21,7 +18,7 @@ public class Login {
 
     /**
      * 转发登录页面
-     * @return
+     * @return 返回login.jsp为登录页面
      */
     @RequestMapping("/login")
     public String log(){
@@ -30,8 +27,8 @@ public class Login {
 
     /**
      * 处理登录请求
-     * @param request
-     * @return
+     * @param request 参数
+     * @return 返回处理信息
      */
     @RequestMapping("/M-login")
     @ResponseBody
