@@ -129,9 +129,8 @@
             url:"/M-register",
             type:"post",
             data:{name:$("#name").val(),password:$("#password").val(),username:$("#username").val()},
-            dataType:"json",
             success:function (data) {
-                alert(data.items[0].msg);
+                alert(data);
             }
         });
     })

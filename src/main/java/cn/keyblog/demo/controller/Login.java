@@ -1,12 +1,7 @@
 package cn.keyblog.demo.controller;
 
 import cn.keyblog.demo.dao.AllUser;
-import cn.keyblog.demo.dao.getUser;
-import com.alibaba.fastjson.JSON;
 import cn.keyblog.demo.util.Json.Model.MyLogin;
-import cn.keyblog.demo.util.Json.jsonCore.ListObject;
-import cn.keyblog.demo.util.Json.status.StatusHouse;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,11 +19,20 @@ public class Login {
     @Resource
     private AllUser allUser;
 
+    /**
+     * 转发登录页面
+     * @return
+     */
     @RequestMapping("/login")
     public String log(){
         return "login";
     }
 
+    /**
+     * 处理登录请求
+     * @param request
+     * @return
+     */
     @RequestMapping("/M-login")
     @ResponseBody
     public String login (HttpServletRequest request){
@@ -36,7 +40,6 @@ public class Login {
         String pwd = request.getParameter("password");
         if(name==null||pwd==null)   return null;
         User myuser = allUser.select(name);
-        List<MyLogin> myLogins = new ArrayList<>();
         if(myuser==null){
             return "no users found!";
         }else{
